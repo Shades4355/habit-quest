@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 2020_05_02_220226) do
   enable_extension "plpgsql"
 
   create_table "UserHabits", force: :cascade do |t|
-    t.integer "user", null: false
-    t.integer "habit", null: false
+    t.integer "user_id", null: false
+    t.integer "habit_id", null: false
   end
 
   create_table "habits", force: :cascade do |t|
