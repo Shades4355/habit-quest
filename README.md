@@ -1,24 +1,20 @@
 # README
+ by: Patrick "Shades" Wetzel-Meyers
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#### Habit Quest:
+Habit Quest is a habit tracker using scoring to motivate the creation of new habits, and the maintenance of difficult habits.
 
-Things you may want to cover:
 
-* Ruby version
+### Technical:
+* Ruby 2.6.5
 
-* System dependencies
+* Rails ~> 5.2.3
 
-* Configuration
+* Uses the 'make_it_so' gem, created by Launch Academy, to start the initial file structure.
 
-* Database creation
+* Build with the rspec test suite
+(run with: bundle exec rspec)
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Links:
+* codebase: https://github.com/Shades4355/habit-quest
+* Heroku: TBD
