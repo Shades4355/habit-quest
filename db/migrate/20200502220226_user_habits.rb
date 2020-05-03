@@ -4,7 +4,5 @@ class UserHabits < ActiveRecord::Migration[5.2]
       t.integer :user_id, null: false
       t.integer :habit_id, null: false
     end
-
-
   end
 end
