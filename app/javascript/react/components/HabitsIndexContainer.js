@@ -44,7 +44,7 @@ const HabitsIndexContainer = props => {
   } else if (habits[0].current_user === null) {
     return(
       <div>
-        Please <a href='/users/sign_in'>Log In</a>
+        Please <a href='/users/sign_in'>Log In</a> To Continue
       </div>
     )
   } else {
