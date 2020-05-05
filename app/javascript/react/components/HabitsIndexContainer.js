@@ -10,7 +10,6 @@ const HabitsIndexContainer = props => {
     {credentials: 'same-origin'})
     .then(response => {
       if (response.ok) {
-        debugger
         return response
       } else {
         let errorMessage = `${response.statuse} (${response.statusText})`,
@@ -25,12 +24,16 @@ const HabitsIndexContainer = props => {
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   },[])
 
+  let setGoal = 0
   let habitTile = habits.map((habit) =>{
+    setGoal += habit.value
     return (
       <HabitTile
         key={habit.id}
         id={habit.id}
         name={habit.name}
+        value={habit.value}
+        user_id={habit.current_user}
       />
     )
   })
@@ -41,10 +44,24 @@ const HabitsIndexContainer = props => {
         <h3>Loading...</h3>
       </div>
     )
+  } else if (habits[0].current_user === null) {
+    return(
+      <div>
+        Please <a href='/users/sign_in'>Log In</a> To Continue
+      </div>
+    )
   } else {
     return(
-      <div className='grid-margin-x'>
-       {habitTile}
+      <div className='grid-x grid-margin-x'>
+        <div className='cell small-12'>
+          Daily Goal: {setGoal}
+        </div>
+        <div className='cell small-12'>
+          Monthly Goal: {setGoal * .9}
+        </div>
+        <div>
+          {habitTile}
+        </div>
       </div>
     )
   }
