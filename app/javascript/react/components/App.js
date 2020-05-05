@@ -8,7 +8,7 @@ export const App = (props) => {
     <BrowserRouter>
       <Switch>
         <Route exact path='/' component={GamesIndexContainer} />
-        
+
       </Switch>
     </BrowserRouter>
   )
