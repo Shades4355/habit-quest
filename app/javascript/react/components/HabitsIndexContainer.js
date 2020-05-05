@@ -30,6 +30,7 @@ const HabitsIndexContainer = props => {
         key={habit.id}
         id={habit.id}
         name={habit.name}
+        user_id={habit.current_user}
       />
     )
   })
@@ -40,10 +41,17 @@ const HabitsIndexContainer = props => {
         <h3>Loading...</h3>
       </div>
     )
+  } else if (habits[0].current_user === null) {
+    return(
+      <div>
+        Please <a href='/users/sign_in'>Log In</a>
+      </div>
+    )
   } else {
     return(
       <div className='grid-margin-x'>
-       {habitTile}
+        <br></br>
+        {habitTile}
       </div>
     )
   }
