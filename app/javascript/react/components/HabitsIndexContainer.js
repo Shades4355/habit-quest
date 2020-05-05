@@ -10,7 +10,6 @@ const HabitsIndexContainer = props => {
     {credentials: 'same-origin'})
     .then(response => {
       if (response.ok) {
-        debugger
         return response
       } else {
         let errorMessage = `${response.statuse} (${response.statusText})`,
