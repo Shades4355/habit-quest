@@ -1,5 +1,5 @@
 class HabitSerializer < ActiveModel::Serializer
-  attributes :id, :name, :current_user
+  attributes :id, :name, :value, :current_user
 
   def current_user
     scope

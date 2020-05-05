@@ -24,12 +24,15 @@ const HabitsIndexContainer = props => {
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   },[])
 
+  let setGoal = 0
   let habitTile = habits.map((habit) =>{
+    setGoal += habit.value
     return (
       <HabitTile
         key={habit.id}
         id={habit.id}
         name={habit.name}
+        value={habit.value}
         user_id={habit.current_user}
       />
     )
@@ -49,9 +52,16 @@ const HabitsIndexContainer = props => {
     )
   } else {
     return(
-      <div className='grid-margin-x'>
-        <br></br>
-        {habitTile}
+      <div className='grid-x grid-margin-x'>
+        <div className='cell small-12'>
+          Daily Goal: {setGoal}
+        </div>
+        <div className='cell small-12'>
+          Monthly Goal: {setGoal * .9}
+        </div>
+        <div>
+          {habitTile}
+        </div>
       </div>
     )
   }
