@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import HabitTile from './HabitTile'
 
-const GamesIndexContainer = props => {
+const HabitsIndexContainer = props => {
   const [getHabits, setHabits] = useState([{}])
 
   useEffect(() =>{
@@ -18,11 +18,12 @@ const GamesIndexContainer = props => {
       }
     })
     .then(response => response.json)
-    .then(habits => {
-      setHabits(habits)
+    .then(habitsBody => {
+      setHabits(habitsBody)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   },[])
+
   let habitTile = getHabits.map((habit) =>{
     return (
       <HabitTile
@@ -48,4 +49,4 @@ const GamesIndexContainer = props => {
   }
 }
 
-export default GamesIndexContainer
+export default HabitsIndexContainer
