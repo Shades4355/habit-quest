@@ -53,8 +53,11 @@ const HabitsIndexContainer = props => {
   } else {
     return(
       <div className='grid-x grid-margin-x'>
-        <div className='cell small-12'>
+        <div className='cell small-4'>
           Daily Goal: {setGoal}
+        </div>
+        <div className='cell small-8'>
+          Current Score:
         </div>
         <div className='cell small-12'>
           Monthly Goal: {setGoal * .9}
