@@ -6,7 +6,8 @@ const GamesIndexContainer = props => {
   const [getHabits, setHabits] = useState([{}])
 
   useEffect(() =>{
-    fetch('/api/v1/habits')
+    fetch('/api/v1/habits',
+    {credentials: 'same-origin'})
     .then(response => {
       if (response.ok) {
         return response
@@ -22,9 +23,6 @@ const GamesIndexContainer = props => {
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   },[])
-
-  debugger
-
   let habitTile = getHabits.map((habit) =>{
     return (
       <HabitTile

@@ -2,10 +2,13 @@ import React from 'react'
 
 
 const HabitTile = props => {
-  debugger
+  const id = props.id
+  const name =props.name
+
   return(
     <div>
-      hi from tile
+      {name}
+      {id}
     </div>
   )
 }
