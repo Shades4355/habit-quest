@@ -6,9 +6,8 @@ const HabitTile = props => {
   const name =props.name
 
   return(
-    <div>
+    <div className='button cell small-6, medium-4'>
       {name}
-      {id}
     </div>
   )
 }

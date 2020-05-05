@@ -41,7 +41,7 @@ const GamesIndexContainer = props => {
     )
   } else {
     return(
-      <div>
+      <div className='grid-margin-x'>
        {habitTile}
       </div>
     )
