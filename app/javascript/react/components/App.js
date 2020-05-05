@@ -1,10 +1,16 @@
 import React from 'react'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+
+import HabitsIndexContainer from './HabitsIndexContainer'
 
 export const App = (props) => {
   return (
-    <h1>
-      Make It So React
-    </h1>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path='/' component={HabitsIndexContainer} />
+
+      </Switch>
+    </BrowserRouter>
   )
 }
 
