@@ -1,6 +1,6 @@
 class HabitsController < ApplicationController
   def new
-    @habit = Habit.new
+    @habit = Habit.new()
   end
 
   def create
@@ -9,8 +9,8 @@ class HabitsController < ApplicationController
     if habit.save
       redirect_to '/'
     else
-      flash.now[:error] = habit.errors.full_messages.to_sentence
-      render :new
+      flash[:error] = habit.errors.full_messages.to_sentence
+      redirect_to '/habits/new'
     end
   end
 
