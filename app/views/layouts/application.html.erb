@@ -7,11 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="grid-x">
+  <div class="grid-x grid-margin-x">
     <div class="titlebar top-bar small-5">
-      <div class="button">
-      profile
-      </div>
+      <%- if current_user -%>
+        <div class="button"><%= link_to 'New Habit', new_habit_path %>
+        </div>
+      <%- end -%>
     </div>
     <nav class="top-bar titlebar small-7 text-center">
       <h1><a href="/">Habit<br>Quest</a></h1>

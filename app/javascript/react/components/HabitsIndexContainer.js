@@ -4,6 +4,10 @@ import HabitTile from './HabitTile'
 
 const HabitsIndexContainer = props => {
   const [habits, setHabits] = useState([{}])
+  const [user, setUser] = useState({})
+  // add fetch to grab current_user
+  // add state & fetch for UserHabit
+  
 
   useEffect(() =>{
     fetch('/api/v1/habits',
