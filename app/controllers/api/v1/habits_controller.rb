@@ -1,5 +1,6 @@
 class Api::V1::HabitsController < ApplicationController
   def index
-    render json: Habit.all
+    habits = Habit.all.sort_by(&:name)
+    render json: habits
   end
 end
