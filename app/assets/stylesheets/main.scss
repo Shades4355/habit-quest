@@ -1,0 +1,19 @@
+$light-purple: #91204D;
+$dark-purple: #452632;
+$orange: #E4844A;
+$yellow: #E8BF56;
+$light-green: #E2F7CE;
+
+.button {
+  background-color: $light-green;
+  color: $dark-purple;
+}
+
+.titlebar {
+  background-color: $orange;
+}
+
+body {
+  background-color: $yellow;
+  color: $dark-purple;
+}
