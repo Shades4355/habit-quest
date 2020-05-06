@@ -7,8 +7,6 @@ const HabitsIndexContainer = props => {
   const [user, setUser] = useState({})
   const [userHabits, setUserHabits] = useState([{}])
   // add fetch to grab current_user
-  // add state & fetch for UserHabit
-
 
   useEffect(() =>{
     fetch('/api/v1/habits',
@@ -43,7 +41,6 @@ const HabitsIndexContainer = props => {
     })
     .then(response => response.json())
     .then(habitsBody => {
-      debugger
       setHabits(habitsBody)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
