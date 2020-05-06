@@ -7,4 +7,5 @@ Rails.application.routes.draw do
       resources :habits, only: [:index]
     end
   end
+  resources :habits, only: [:new, :create]
 end
