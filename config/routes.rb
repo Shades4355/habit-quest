@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :habits, only: [:index]
+      resources :userhabits, only: [:index]
     end
   end
   resources :habits, only: [:new, :create]

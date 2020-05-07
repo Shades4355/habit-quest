@@ -4,10 +4,7 @@ import HabitTile from './HabitTile'
 
 const HabitsIndexContainer = props => {
   const [habits, setHabits] = useState([{}])
-  const [user, setUser] = useState({})
-  // add fetch to grab current_user
-  // add state & fetch for UserHabit
-  
+  const [userHabits, setUserHabits] = useState()
 
   useEffect(() =>{
     fetch('/api/v1/habits',
@@ -27,6 +24,39 @@ const HabitsIndexContainer = props => {
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   },[])
+
+  useEffect(() =>{
+    fetch('/api/v1/userhabits',
+    {credentials: 'same-origin'})
+    .then(response => {
+      if (response.ok) {
+        return response
+      } else {
+        let errorMessage = `${response.statuse} (${response.statusText})`,
+        error = new Error(errorMessage)
+        throw error
+      }
+    })
+    .then(response => response.json())
+    .then(userhabitsBody => {
+      setUserHabits(userhabitsBody)
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`))
+  },[])
+
+  let today_score = 0
+  if (userHabits !== undefined) {
+    let dailyMap = userHabits.today.map(userhabit =>{
+      today_score += userhabit.habit.value
+    })
+  }
+
+  let monthly_score = 0
+  if (userHabits !== undefined) {
+    let dailyMap = userHabits.this_month.map(userhabit =>{
+      monthly_score += userhabit.habit.value
+    })
+  }
 
   let setGoal = 0
   let habitTile = habits.map((habit) =>{
@@ -60,8 +90,11 @@ const HabitsIndexContainer = props => {
         <div className='cell small-4'>
           Daily Goal: {setGoal}
         </div>
-        <div className='cell small-8'>
-          Current Score:
+        <div className='cell small-4'>
+          Today's Score: {today_score}
+        </div>
+        <div className='cell small-4'>
+          This Month's Score: {monthly_score}
         </div>
         <div className='cell small-12'>
           Monthly Goal: {setGoal * .9}
