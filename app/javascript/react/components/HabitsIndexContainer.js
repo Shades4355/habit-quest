@@ -4,9 +4,7 @@ import HabitTile from './HabitTile'
 
 const HabitsIndexContainer = props => {
   const [habits, setHabits] = useState([{}])
-  const [user, setUser] = useState({})
-  const [userHabits, setUserHabits] = useState([{}])
-  // add fetch to grab current_user
+  const [userHabits, setUserHabits] = useState()
 
   useEffect(() =>{
     fetch('/api/v1/habits',
@@ -40,16 +38,18 @@ const HabitsIndexContainer = props => {
       }
     })
     .then(response => response.json())
-    .then(habitsBody => {
-      setHabits(habitsBody)
+    .then(userhabitsBody => {
+      setUserHabits(userhabitsBody)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   },[])
 
-let today_score = 0
-let uhMap = userHabits.map((habit) =>{
-  today_score += habit.value
-})
+  let today_score = 0
+  if (userHabits !== undefined) {
+    let dailyMap = userHabits.today.map(userhabit =>{
+      today_score += userhabit.habit.value
+    })
+  }
 
   let setGoal = 0
   let habitTile = habits.map((habit) =>{
