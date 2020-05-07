@@ -51,6 +51,13 @@ const HabitsIndexContainer = props => {
     })
   }
 
+  let monthly_score = 0
+  if (userHabits !== undefined) {
+    let dailyMap = userHabits.this_month.map(userhabit =>{
+      monthly_score += userhabit.habit.value
+    })
+  }
+
   let setGoal = 0
   let habitTile = habits.map((habit) =>{
     setGoal += habit.value
@@ -83,8 +90,11 @@ const HabitsIndexContainer = props => {
         <div className='cell small-4'>
           Daily Goal: {setGoal}
         </div>
-        <div className='cell small-8'>
-          Current Score: {today_score}
+        <div className='cell small-4'>
+          Today's Score: {today_score}
+        </div>
+        <div className='cell small-4'>
+          This Month's Score: {monthly_score}
         </div>
         <div className='cell small-12'>
           Monthly Goal: {setGoal * .9}
