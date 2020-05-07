@@ -14,23 +14,23 @@ const HabitTile = props => {
         method: 'POST',
         body: JSON.stringify(props.id)
       })
-  .then(response => {
-    if(response.ok) {
-      setButtonValue('true')
-      return response
-    } else {
-      let errorMessage = `${response.status} (${response.statusText})`,
-      error = new Error(errorMessage)
-      throw error
-    }
-  })
-  .then(response => response.json())
-  .then(parsedData => {
-    if (parsedData.errors){
-    setErrors(parsedData.errors)
-  }
-  })
-  .catch(error => console.error(`Error in fetch: ${error.message}`))
+      .then(response => {
+        if(response.ok) {
+          setButtonValue('true')
+          return response
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage)
+          throw error
+        }
+      })
+      .then(response => response.json())
+      .then(parsedData => {
+        if (parsedData.errors){
+        setErrors(parsedData.errors)
+      }
+      })
+      .catch(error => console.error(`Error in fetch: ${error.message}`))
     } else {
       //fetch destroy/delete
       //
