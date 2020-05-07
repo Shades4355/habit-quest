@@ -16,6 +16,12 @@ class Api::V1::UserhabitsController < ApplicationController
       }
   end
 
+  def create
+    binding.pry
+    taskPerformed = UserHabit.new(uh_params)
+    taskPerformed.user_id = current_user.id
+  end
+  
   private
 
   def serialized_data(data, serializer)

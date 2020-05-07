@@ -97,7 +97,7 @@ const HabitsIndexContainer = props => {
           This Month's Score: {monthly_score}
         </div>
         <div className='cell small-12'>
-          Monthly Goal: {setGoal * .9}
+          Monthly Goal: {parseInt(setGoal * .8 * 29)}
         </div>
         <div>
           {habitTile}
