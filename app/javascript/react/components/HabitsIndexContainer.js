@@ -4,7 +4,7 @@ import HabitTile from './HabitTile'
 
 const HabitsIndexContainer = props => {
   const [habits, setHabits] = useState([{}])
-  const [userHabits, setUserHabits] = useState()
+  const [logs, setLogs] = useState()
 
   useEffect(() =>{
     fetch('/api/v1/habits',
@@ -26,35 +26,35 @@ const HabitsIndexContainer = props => {
   },[])
 
   useEffect(() =>{
-    fetch('/api/v1/userhabits',
+    fetch('/api/v1/logs',
     {credentials: 'same-origin'})
     .then(response => {
       if (response.ok) {
         return response
       } else {
-        let errorMessage = `${response.statuse} (${response.statusText})`,
+        let errorMessage = `${response.status} (${response.statusText})`,
         error = new Error(errorMessage)
         throw error
       }
     })
     .then(response => response.json())
     .then(userhabitsBody => {
-      setUserHabits(userhabitsBody)
+      setLogs(userhabitsBody)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   },[])
 
   let today_score = 0
-  if (userHabits !== undefined) {
-    let dailyMap = userHabits.today.map(userhabit =>{
-      today_score += userhabit.habit.value
+  if (logs !== undefined) {
+    let dailyMap = logs.today.map(log =>{
+      today_score += log.habit.value
     })
   }
 
   let monthly_score = 0
-  if (userHabits !== undefined) {
-    let dailyMap = userHabits.this_month.map(userhabit =>{
-      monthly_score += userhabit.habit.value
+  if (logs !== undefined) {
+    let dailyMap = logs.this_month.map(log =>{
+      monthly_score += logs.habit.value
     })
   }
 
@@ -72,7 +72,7 @@ const HabitsIndexContainer = props => {
     )
   })
 
-  if (habits === [{}]) {
+  if (habits === []) {
     return(
       <div>
         <h3>Loading...</h3>
