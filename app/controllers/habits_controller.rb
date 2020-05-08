@@ -5,6 +5,7 @@ class HabitsController < ApplicationController
 
   def create
     habit = Habit.new(habit_params)
+    habit.user = current_user
 
     if habit.save
       redirect_to '/'
