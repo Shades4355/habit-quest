@@ -1,5 +1,5 @@
 class LogsSerializer < ActiveModel::Serializer
-  resources :id
+  attributes :id
 
   belongs_to :habit
 end

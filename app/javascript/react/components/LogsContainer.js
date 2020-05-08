@@ -29,7 +29,7 @@ const LogsContainer = props => {
   }
 
   let monthly_score = 0
-  if (logs !== undefined) {
+  if (logs !== undefined && logs.this_month !== undefined) {
     let dailyMap = logs.this_month.map(log =>{
       monthly_score += logs.habit.value
     })
