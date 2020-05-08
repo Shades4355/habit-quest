@@ -38,8 +38,8 @@ const HabitsIndexContainer = props => {
       }
     })
     .then(response => response.json())
-    .then(userhabitsBody => {
-      setLogs(userhabitsBody)
+    .then(responseBody => {
+      setLogs(responseBody)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   },[])
