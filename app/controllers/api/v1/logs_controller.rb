@@ -1,18 +1,24 @@
 class Api::V1::LogsController < ApplicationController
 
   def index
-    all_for_user = Log.where("user_id = ?", current_user.id).all
+    all_for_user = Log.all_for_user(current_user)
 
-    today = all_for_user.where("created_at > ?", Time.now())
+    today = all_for_user.today
 
-    this_month = all_for_user.where("created_at <= ?", today).all && all_for_user.where("created_at >= ?", Date.new().beginning_of_month).all
+    this_month = all_for_user.this_month
 
-    last_month = all_for_user.where('created_at > ?', Date.new().beginning_of_month).all && all_for_user.where('created_at < ?',1.month.ago.beginning_of_month).all
+    last_month = all_for_user.last_month
+
+    two_months_ago = all_for_user.two_months_ago
+
+    three_months_ago = all_for_user.three_months_ago
 
     render json: {
       today: serialized_data(today, LogsSerializer),
       this_month: serialized_data(this_month, LogsSerializer),
       last_month: serialized_data(last_month, LogsSerializer),
+      two_months_ago: serialized_data(two_months_ago, LogsSerializer),
+      three_months_ago: serialized_data(three_months_ago, LogsSerializer)
       }
   end
 
