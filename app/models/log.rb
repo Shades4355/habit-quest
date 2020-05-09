@@ -10,16 +10,4 @@ class Log < ApplicationRecord
     end
     return logs
   end
-
-  def self.last_month
-    self.where('created_at > ?', Date.new().beginning_of_month).all && self.where('created_at < ?',1.month.ago.beginning_of_month).all
-  end
-
-  def self.two_months_ago
-    self.where('created_at > ?', 1.month.ago.beginning_of_month).all && self.where('created_at < ?',2.month.ago.beginning_of_month).all
-  end
-
-  def self.three_months_ago
-    self.where('created_at > ?', 2.month.ago.beginning_of_month).all && self.where('created_at < ?',3.month.ago.beginning_of_month).all
-  end
 end
