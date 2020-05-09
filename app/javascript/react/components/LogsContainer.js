@@ -4,7 +4,8 @@ const LogsContainer = props => {
   const [logs, setLogs] = useState()
 
   useEffect(() =>{
-    fetch('/api/v1/logs')
+    fetch('/api/v1/logs',
+    {credentials: 'same-origin'})
     .then(response => {
       if (response.ok) {
         return response
