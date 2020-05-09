@@ -1,7 +1,7 @@
 class Habit < ApplicationRecord
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true
   validates :value, presence: true, numericality: true
 
-  has_many :user_habits
-  has_many :users, through: :user_habits
+  belongs_to :user
+  has_many :logs
 end

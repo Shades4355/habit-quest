@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 
 import HabitTile from './HabitTile'
+import LogsContainer from './LogsContainer'
 
 const HabitsIndexContainer = props => {
   const [habits, setHabits] = useState([{}])
-  const [userHabits, setUserHabits] = useState()
 
   useEffect(() =>{
     fetch('/api/v1/habits',
@@ -25,45 +25,12 @@ const HabitsIndexContainer = props => {
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   },[])
 
-  useEffect(() =>{
-    fetch('/api/v1/userhabits',
-    {credentials: 'same-origin'})
-    .then(response => {
-      if (response.ok) {
-        return response
-      } else {
-        let errorMessage = `${response.statuse} (${response.statusText})`,
-        error = new Error(errorMessage)
-        throw error
-      }
-    })
-    .then(response => response.json())
-    .then(userhabitsBody => {
-      setUserHabits(userhabitsBody)
-    })
-    .catch(error => console.error(`Error in fetch: ${error.message}`))
-  },[])
-
-  let today_score = 0
-  if (userHabits !== undefined) {
-    let dailyMap = userHabits.today.map(userhabit =>{
-      today_score += userhabit.habit.value
-    })
-  }
-
-  let monthly_score = 0
-  if (userHabits !== undefined) {
-    let dailyMap = userHabits.this_month.map(userhabit =>{
-      monthly_score += userhabit.habit.value
-    })
-  }
-
   let setGoal = 0
-  let habitTile = habits.map((habit) =>{
+  let habitTile = habits.map((habit, index) =>{
     setGoal += habit.value
     return (
       <HabitTile
-        key={habit.id}
+        key={index}
         id={habit.id}
         name={habit.name}
         value={habit.value}
@@ -72,7 +39,7 @@ const HabitsIndexContainer = props => {
     )
   })
 
-  if (habits === [{}]) {
+  if (habits === []) {
     return(
       <div>
         <h3>Loading...</h3>
@@ -87,18 +54,12 @@ const HabitsIndexContainer = props => {
   } else {
     return(
       <div className='grid-x grid-margin-x'>
-        <div className='cell small-4'>
+        <div className='cell small-6'>
           Daily Goal: {setGoal}
+          <br />
+          Monthly Goal: {parseInt(setGoal * .8 * 29)}
         </div>
-        <div className='cell small-4'>
-          Today's Score: {today_score}
-        </div>
-        <div className='cell small-4'>
-          This Month's Score: {monthly_score}
-        </div>
-        <div className='cell small-12'>
-          Monthly Goal: {setGoal * .9}
-        </div>
+        <LogsContainer />
         <div>
           {habitTile}
         </div>
