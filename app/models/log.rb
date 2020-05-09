@@ -11,11 +11,6 @@ class Log < ApplicationRecord
     return logs
   end
 
-
-  def today
-    self.where("created_at > ?", Time.now())
-  end
-
   def self.this_month
     self.where("created_at <= ?", today).all && self.where("created_at >= ?", Date.new().beginning_of_month).all
   end
