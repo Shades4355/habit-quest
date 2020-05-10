@@ -4,4 +4,5 @@ class Api::V1::HabitsController < ApplicationController
 
     render json: habits
   end
+
 end

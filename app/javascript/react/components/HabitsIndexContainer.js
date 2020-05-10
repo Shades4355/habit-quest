@@ -27,7 +27,9 @@ const HabitsIndexContainer = props => {
 
   let setGoal = 0
   let habitTile = habits.map((habit, index) =>{
-    setGoal += habit.value
+    if (habit.value > 0){
+      setGoal += habit.value
+    }
     return (
       <HabitTile
         key={index}
@@ -59,8 +61,11 @@ const HabitsIndexContainer = props => {
           <br />
           Monthly Goal: {parseInt(setGoal * .8 * 29)}
         </div>
-        <LogsContainer />
-        <div>
+        <div className='cell small-6'>
+          <LogsContainer />
+        </div>
+        <br />
+        <div className=''>
           {habitTile}
         </div>
       </div>

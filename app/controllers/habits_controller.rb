@@ -1,4 +1,6 @@
 class HabitsController < ApplicationController
+  protect_from_forgery unless: -> { request.format.json? }
+
   def new
     @habit = Habit.new()
   end
@@ -15,7 +17,13 @@ class HabitsController < ApplicationController
     end
   end
 
+  def destroy
+    deleted_habit = Habit.find(params[:id]).delete
+    render json: deleted_habit
+  end
+
   private
+
   def habit_params
     params.require(:habit).permit(:name, :value)
   end

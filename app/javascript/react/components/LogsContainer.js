@@ -38,7 +38,7 @@ const LogsContainer = props => {
 
   return (
     <div>
-      <div className='cell small-6'>
+      <div>
         Today's Score: {today_score}
       <br />
         This Month's Score: {monthly_score}
