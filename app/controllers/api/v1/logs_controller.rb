@@ -3,7 +3,7 @@ class Api::V1::LogsController < ApplicationController
   def index
     all_for_user = Log.all_for_user(current_user)
 
-    today = all_for_user.filter{ |log| log.created_at < Time.now && log.created_at > 1.day.ago}
+    today = all_for_user.filter{ |log| log.created_at < Time.now && log.created_at > Time.now.beginning_of_day}
 
     this_month = all_for_user.filter{ |log| log.created_at > Time.now.beginning_of_month}
 

@@ -15,7 +15,14 @@ class HabitsController < ApplicationController
     end
   end
 
+  def destroy
+    binding.pry
+    deleted_habit = Habit.find(params[:id]).delete
+    render json: deleted_habit
+  end
+
   private
+
   def habit_params
     params.require(:habit).permit(:name, :value)
   end

@@ -27,7 +27,9 @@ const HabitsIndexContainer = props => {
 
   let setGoal = 0
   let habitTile = habits.map((habit, index) =>{
-    setGoal += habit.value
+    if (habit.value > 0){
+      setGoal += habit.value
+    }
     return (
       <HabitTile
         key={index}
