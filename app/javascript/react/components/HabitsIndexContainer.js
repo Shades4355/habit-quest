@@ -59,8 +59,11 @@ const HabitsIndexContainer = props => {
           <br />
           Monthly Goal: {parseInt(setGoal * .8 * 29)}
         </div>
-        <LogsContainer />
-        <div>
+        <div className='cell small-6'>
+          <LogsContainer />
+        </div>
+        <br />
+        <div className=''>
           {habitTile}
         </div>
       </div>
