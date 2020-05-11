@@ -10,8 +10,15 @@
   <div class="grid-x grid-margin-x">
     <div class="titlebar top-bar small-5">
       <%- if current_user -%>
-        <div class="button"><%= link_to 'New Habit', new_habit_path %>
-        </div>
+        <ul>
+          <li class="button"><%= link_to 'New Habit', new_habit_path %>
+          </li>
+          <br>
+          <li class="button">
+            <a href='/users/<%= current_user.id %>'>Profile</a>
+          </li>
+        </ul>
+
       <%- end -%>
     </div>
     <nav class="top-bar titlebar small-7 text-center">
