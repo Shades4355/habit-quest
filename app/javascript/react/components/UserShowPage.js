@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
+import ChartsTile from './ChartsTile'
+
 const UserShowPage = props => {
   const [user, setUser] = useState()
 
@@ -20,7 +22,6 @@ const UserShowPage = props => {
     })
     .then(response => response.json())
     .then(responseBody => {
-      debugger
       setUser(responseBody)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
@@ -33,8 +34,11 @@ const UserShowPage = props => {
     )
   } else {
     return(
-      <div className='grid-container grid-x grid-margin-x'>
-        Your Profile
+      <div className='grid-container'>
+        <div>
+          <h1>{user.email}</h1>
+        </div>
+        <ChartsTile />
       </div>
     )
   }
