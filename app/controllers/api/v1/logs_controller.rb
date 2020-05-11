@@ -1,4 +1,5 @@
 class Api::V1::LogsController < ApplicationController
+  protect_from_forgery unless: -> { request.format.json? }
 
   def index
     all_for_user = Log.all_for_user(current_user)
@@ -24,13 +25,25 @@ class Api::V1::LogsController < ApplicationController
   end
 
   def create
-    taskPerformed = Log.new(uh_params)
-    taskPerformed.user_id = current_user.id
+    new_log = Log.new()
+    new_log.habit_id = params["_json"]
+    if new_log.save
+      render json: new_log
+    else
+      flash.now[:error] = habit.errors.full_messages.to_sentence
+    end
+
+
   end
 
   private
 
   def serialized_data(data, serializer)
     ActiveModelSerializers::SerializableResource.new(data, each_serializer: serializer, scope: current_user)
+  end
+
+  def log_params
+
+
   end
 end

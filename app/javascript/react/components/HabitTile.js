@@ -7,9 +7,30 @@ const HabitTile = props => {
   const name = props.name
   const value = props.value
 
-  const buttonClick = event => {
-    console.log(id + " " + name)
+  const createLog = event => {
+    fetch(`/api/v1/logs`,{
+      method: "POST",
+      body: JSON.stringify(id),
+      credentials: "same-origin",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
+    })
+    .then(response => {
+      if (response.ok){
+        setShouldRedirect(true)
+        return response
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+        error = new Error(errorMessage)
+        throw error
+      }
+    })
+
+    .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
+
 
   const deleteHabit = event => {
     fetch(`/habits/${id}`,{
@@ -40,7 +61,7 @@ const HabitTile = props => {
 
   return(
     <div className={`button cell small-6, medium-3`} >
-      <div onClick={buttonClick}>
+      <div onClick={createLog}>
         {name}: {value}
       </div>
       <a href={`/habits/${id}/edit`}>Edit </a>
