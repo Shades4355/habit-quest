@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :habits, only: [:index, :show, :edit]
+      resources :habits, only: [:index, :show, :edit, :update]
       resources :logs, only: [:index, :create, :destroy]
     end
   end
