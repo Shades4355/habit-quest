@@ -17,4 +17,4 @@ Habit Quest is a habit tracker using scoring to motivate the creation of new hab
 
 ### Links:
 * codebase: https://github.com/Shades4355/habit-quest
-* Heroku: TBD
+* Heroku: https://habit-hero.herokuapp.com/
