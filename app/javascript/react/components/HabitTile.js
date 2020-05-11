@@ -1,7 +1,8 @@
-import React, { useState }  from 'react'
-
+import React, { useState } from 'react'
+import { Redirect } from 'react-router-dom'
 
 const HabitTile = props => {
+  const [shouldRedirect, setShouldRedirect] = useState(false)
   const id = props.id
   const name = props.name
   const value = props.value
@@ -21,6 +22,7 @@ const HabitTile = props => {
     })
     .then(response => {
       if (response.ok){
+        setShouldRedirect(true)
         return response
       } else {
         let errorMessage = `${response.status} (${response.statusText})`,
@@ -29,6 +31,11 @@ const HabitTile = props => {
       }
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
+  }
+
+  if (shouldRedirect) {
+    setShouldRedirect(false)
+    window.location.reload()
   }
 
   return(

@@ -64,6 +64,7 @@ const EditHabit = props => {
   if (shouldRedirect) {
       return <Redirect to={'/'} />
     }
+    
 if (habit !== undefined){
   return(
     <div className="grid-container">
