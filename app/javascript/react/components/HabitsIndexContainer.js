@@ -41,13 +41,15 @@ const HabitsIndexContainer = props => {
     )
   })
 
+  debugger
+
   if (habits === []) {
     return(
       <div>
         <h3>Loading...</h3>
       </div>
     )
-  } else if (habits[0].current_user === null) {
+  } else if (habits[0].current_user === undefined) {
     return(
       <div>
         Please <a href='/users/sign_in'>Log In</a> To Continue
