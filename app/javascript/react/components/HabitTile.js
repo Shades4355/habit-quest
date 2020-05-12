@@ -60,7 +60,7 @@ const HabitTile = props => {
   }
 
   return(
-    <div className={`button cell small-6, medium-3`} >
+    <div className={'button cell callout small-6, medium-6'} >
       <div onClick={createLog}>
         {name}: {value}
       </div>

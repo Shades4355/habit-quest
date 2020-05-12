@@ -55,18 +55,20 @@ const HabitsIndexContainer = props => {
     )
   } else {
     return(
-      <div className='grid-x grid-margin-x'>
-        <div className='cell small-6'>
-          Daily Goal: {setGoal}
+      <div className='grid-container'>
+        <div className='grid-x grid-margin-x'>
+          <div className='cell small-6'>
+            Daily Goal: {setGoal}
+            <br />
+            Monthly Goal: {parseInt(setGoal * .8 * 29)}
+          </div>
+          <div className='cell small-6'>
+            <LogsContainer />
+          </div>
           <br />
-          Monthly Goal: {parseInt(setGoal * .8 * 29)}
-        </div>
-        <div className='cell small-6'>
-          <LogsContainer />
-        </div>
-        <br />
-        <div className=''>
-          {habitTile}
+          <div id='habitTile'>
+            {habitTile}
+          </div>
         </div>
       </div>
     )
