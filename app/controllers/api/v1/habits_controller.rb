@@ -1,7 +1,8 @@
 class Api::V1::HabitsController < ApplicationController
   protect_from_forgery unless: -> { request.format.json? }
   def index
-    habits = Habit.all.sort_by(&:name)
+    habits = current_user.habits.sort_by(&:name)
+
 
     render json: habits
   end
