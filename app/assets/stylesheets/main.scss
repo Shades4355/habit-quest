@@ -9,7 +9,24 @@ $light-green: #E2F7CE;
   color: $dark-purple;
 }
 
+.top-bar {
+  ul {
+    background-color: $orange;
+  }
+}
+
+h1, h2, h3 {
+  color: $dark-purple;
+}
+
+a {
+  color: $dark-purple;
+}
+
 .titlebar {
+  background-color: $orange;
+}
+.orange {
   background-color: $orange;
 }
 
@@ -25,4 +42,12 @@ body {
 
 .true {
   background-color: $light-purple;
+}
+
+#habitTile {
+  margin: auto;
+}
+
+.margin-bottom {
+    margin-bottom: 0
 }

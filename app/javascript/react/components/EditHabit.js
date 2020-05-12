@@ -64,12 +64,12 @@ const EditHabit = props => {
   if (shouldRedirect) {
       return <Redirect to={'/'} />
     }
-    
+
 if (habit !== undefined){
   return(
     <div className="grid-container">
       <div className='grid-x grid-margin-x align-center'>
-        <div className="cell small-12 medium-10">
+        <div className="small-12 medium-3">
           <h4>Edit your Habit!</h4>
           <form onSubmit={handleSubmit}>
 
