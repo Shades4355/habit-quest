@@ -41,8 +41,6 @@ const HabitsIndexContainer = props => {
     )
   })
 
-  debugger
-
   if (habits === []) {
     return(
       <div>
