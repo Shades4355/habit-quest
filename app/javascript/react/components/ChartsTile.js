@@ -26,28 +26,28 @@ const ChartsTile = props => {
   var this_month_score = 0
   if (logs !== undefined && logs.this_month !== undefined) {
     const thisMonth = logs.this_month.map(log =>{
-      this_month_score += log.habit.value
+      this_month_score += log.value
     })
   }
 
   var last_month_score = 0
   if (logs !== undefined && logs.last_month !== undefined) {
     const lastMonth = logs.last_month.map(log =>{
-      last_month_score += log.habit.value
+      last_month_score += log.value
     })
   }
 
   var two_months_ago_score = 0
   if (logs !== undefined && logs.two_months_ago !== undefined) {
     const twoMonthsAgo = logs.two_months_ago.map(log =>{
-      two_months_ago_score += log.habit.value
+      two_months_ago_score += log.value
     })
   }
 
   var three_months_ago_score = 0
   if (logs !== undefined && logs.three_months_ago !== undefined) {
     const threeMonthsAgo = logs.three_months_ago.map(log =>{
-      three_months_ago_score += log.habit.value
+      three_months_ago_score += log.value
     })
   }
 

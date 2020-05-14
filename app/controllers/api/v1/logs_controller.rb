@@ -27,13 +27,13 @@ class Api::V1::LogsController < ApplicationController
   def create
     new_log = Log.new()
     new_log.habit_id = params["_json"]
+    new_log.value = new_log.habit.value
+    new_log.user_id = current_user.id
     if new_log.save
       render json: new_log
     else
       flash.now[:error] = habit.errors.full_messages.to_sentence
     end
-
-
   end
 
   private
