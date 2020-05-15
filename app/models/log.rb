@@ -4,7 +4,7 @@ class Log < ApplicationRecord
 
   validates :habit_id, numericality: true, allow_nil: true
   validates :user_id, numericality: true
-  validates :value, numericality: true
+  validates :value, numericality: true, allow_blank: true
 
   def self.all_for_user(c_user)
     logs = []
