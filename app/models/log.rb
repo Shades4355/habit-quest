@@ -13,4 +13,24 @@ class Log < ApplicationRecord
     end
     return logs
   end
+
+  def self.today(array)
+    array.filter{ |log| log.created_at < Time.now && log.created_at > Time.now.beginning_of_day}
+  end
+
+  def self.this_month(array)
+    array.filter{ |log| log.created_at > Time.now.beginning_of_month}
+  end
+
+  def self.last_month(array)
+    array.filter{ |log| log.created_at < Time.now.beginning_of_month && log.created_at > 1.month.ago.beginning_of_month}
+  end
+
+  def self.two_months_ago(array)
+    array.filter{ |log| log.created_at < 1.month.ago.beginning_of_month && log.created_at > 2.month.ago.beginning_of_month}
+  end
+
+  def self.three_months_ago(array)
+    array.filter{ |log| log.created_at < 2.month.ago.beginning_of_month && log.created_at > 3.month.ago.beginning_of_month}
+  end
 end

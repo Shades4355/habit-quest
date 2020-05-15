@@ -4,16 +4,11 @@ class Api::V1::LogsController < ApplicationController
   def index
     all_for_user = Log.all_for_user(current_user)
 
-    today = all_for_user.filter{ |log| log.created_at < Time.now && log.created_at > Time.now.beginning_of_day}
-
-    this_month = all_for_user.filter{ |log| log.created_at > Time.now.beginning_of_month}
-
-    last_month = all_for_user.filter{ |log| log.created_at < Time.now.beginning_of_month && log.created_at > 1.month.ago.beginning_of_month}
-
-    two_months_ago = all_for_user.filter{ |log| log.created_at < 1.month.ago.beginning_of_month && log.created_at > 2.month.ago.beginning_of_month}
-
-    three_months_ago = all_for_user.filter{ |log| log.created_at < 2.month.ago.beginning_of_month && log.created_at > 3.month.ago.beginning_of_month}
-
+    today = Log.today(all_for_user)
+    this_month = Log.this_month(all_for_user)
+    last_month = Log.last_month(all_for_user)
+    two_months_ago = Log.two_months_ago(all_for_user)
+    three_months_ago = Log.three_months_ago(all_for_user)
 
     render json: {
       today: serialized_data(today, LogsSerializer),
