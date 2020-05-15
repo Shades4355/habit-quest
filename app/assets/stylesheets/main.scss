@@ -3,10 +3,23 @@ $dark-purple: #452632;
 $orange: #E4844A;
 $yellow: #E8BF56;
 $light-green: #E2F7CE;
+$darker-green: #228B22;
+
+//import fonts
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@700&display=swap");
+
+body {
+  font-family: "Noto Sans TC"
+}
 
 .button {
   background-color: $light-green;
   color: $dark-purple;
+  
+  &:hover {
+    background-color: $darker-green
+  }
 }
 
 .top-bar {
@@ -17,10 +30,14 @@ $light-green: #E2F7CE;
 
 h1, h2, h3 {
   color: $dark-purple;
+  font-family: "Cormorant Garamond";
 }
 
 a {
   color: $dark-purple;
+  &:hover {
+    color: white;
+  }
 }
 
 .titlebar {

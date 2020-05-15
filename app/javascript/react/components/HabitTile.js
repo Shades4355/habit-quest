@@ -64,8 +64,8 @@ const HabitTile = props => {
       <div onClick={createLog}>
         {name}: {value}
       </div>
-      <a href={`/habits/${id}/edit`}>Edit </a>
-      <a onClick={deleteHabit}> Delete</a>
+      <a href={`/habits/${id}/edit`}>Edit  </a>
+      <a onClick={deleteHabit}>Delete</a>
     </div>
 
   )
