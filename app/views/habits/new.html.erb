@@ -1,11 +1,15 @@
-<div class='body'>
-  <%= form_for @habit do |f| %>
-    <%= f.label :name, 'Habit' %>
-    <%= f.text_field :name %><br />
+<div class="grid-container">
+  <div class='grid-x grid-margin-x align-center'>
+    <div class='bodysmall-12 medium-3'>
+      <%= form_for @habit do |f| %>
+        <%= f.label :name, 'Habit' %>
+        <%= f.text_field :name %><br />
 
-    <%= f.label :value, 'Value (-5 to 5)'%>
-    <%= f.text_field :value %><br />
+        <%= f.label :value, 'Value (-5 to 5)'%>
+        <%= f.text_field :value %><br />
 
-    <%= f.submit %>
-  <% end %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+  </div>
 </div>
