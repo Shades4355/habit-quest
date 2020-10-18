@@ -2,8 +2,9 @@
  by: Patrick "Shades" Wetzel-Meyers
 
 #### Habit Quest:
-Habit Quest is a habit tracker using scoring to motivate the creation of new habits, and the maintenance of difficult habits.
+‘Habit Quest’ was my first solo full-stack project. 
 
+‘Habit Quest’ allows logged-in users to create and edit habits they want to track; assigning each habit a score from -5 to 5, where a negative score represents a habit you wish to break, and a positive score represents a habit you wish to form or maintain. Once created, you can track your daily habits simply by clicking on said habit’s name. Once tracked, you can see your score for this month through the past 3 months as a line graph on your user profile page.
 
 ### Technical:
 * Ruby 2.6.5
