@@ -1,5 +1,5 @@
 # README
- by: Patrick "Shades" Wetzel-Meyers
+ by: Patrick "Shades" Meyers
 
 #### Habit Quest:
 ‘Habit Quest’ was my first solo full-stack project. 
@@ -18,4 +18,3 @@
 
 ### Links:
 * codebase: https://github.com/Shades4355/habit-quest
-* Heroku: https://habit-hero.herokuapp.com/
